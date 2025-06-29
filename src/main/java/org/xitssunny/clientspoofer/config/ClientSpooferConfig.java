@@ -18,12 +18,12 @@ public class ClientSpooferConfig extends Config {
             name = "Client",
             options = {"Vanilla", "Forge", "Lunar", "Badlion", "Null", "Cancel"}
     )
-    public static int clientDropdown = 0;
+    public int clientDropdown = 0;
 
     @Switch(
             name = "cancelForgePacket"
     )
-    public static boolean cancelforgepacket = false;
+    public boolean cancelforgepacket = false;
 
     @EventListener
     public void onSendPacket(@NotNull SendPacketEvent event) {
