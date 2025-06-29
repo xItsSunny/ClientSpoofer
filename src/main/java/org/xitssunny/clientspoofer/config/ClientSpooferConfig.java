@@ -2,6 +2,7 @@ package org.xitssunny.clientspoofer.config;
 
 import cc.polyfrost.oneconfig.config.annotations.Switch;
 import net.minecraft.network.play.client.C17PacketCustomPayload;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
 import org.jetbrains.annotations.NotNull;
 import org.xitssunny.clientspoofer.ClientSpoofer;
@@ -11,7 +12,6 @@ import cc.polyfrost.oneconfig.config.data.Mod;
 import cc.polyfrost.oneconfig.config.data.ModType;
 import org.xitssunny.clientspoofer.event.ClientBrandEvent;
 import org.xitssunny.clientspoofer.event.SendPacketEvent;
-import org.xitssunny.clientspoofer.eventbus.EventListener;
 
 public class ClientSpooferConfig extends Config {
     @Dropdown(
@@ -25,19 +25,19 @@ public class ClientSpooferConfig extends Config {
     )
     public boolean cancelforgepacket = false;
 
-    @EventListener
+    @SubscribeEvent
     public void onSendPacket(@NotNull SendPacketEvent event) {
         if (event.getPacket() instanceof FMLProxyPacket
                 && cancelforgepacket == true) {
-            event.cancel();
+            event.setCanceled(true);
         }
         if (event.getPacket() instanceof C17PacketCustomPayload
                 && clientDropdown == 5) {
-            event.cancel();
+            event.setCanceled(true);
         }
     }
 
-    @EventListener
+    @SubscribeEvent
     public void onClientBrand(@NotNull ClientBrandEvent event) {
         String brand = event.getBrand();
 

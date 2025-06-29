@@ -1,5 +1,6 @@
 package org.xitssunny.clientspoofer;
 
+import net.minecraftforge.common.MinecraftForge;
 import org.xitssunny.clientspoofer.command.ClientSpooferCommand;
 import org.xitssunny.clientspoofer.config.ClientSpooferConfig;
 import net.minecraftforge.fml.common.Mod;
@@ -18,6 +19,8 @@ public class ClientSpoofer {
 
     @Mod.EventHandler
     public void onInit(FMLInitializationEvent event) {
+        MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new ClientSpooferConfig());
         config = new ClientSpooferConfig();
         CommandManager.INSTANCE.registerCommand(new ClientSpooferCommand());
     }

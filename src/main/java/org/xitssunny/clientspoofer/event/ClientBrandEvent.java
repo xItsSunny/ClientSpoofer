@@ -1,6 +1,5 @@
 package org.xitssunny.clientspoofer.event;
 
-import org.xitssunny.clientspoofer.eventbus.Event;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,6 +7,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
-public class ClientBrandEvent extends Event {
+public class ClientBrandEvent {
     private String brand;
 }

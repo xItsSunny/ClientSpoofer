@@ -1,6 +1,5 @@
 package org.xitssunny.clientspoofer.event;
 
-import org.xitssunny.clientspoofer.eventbus.CancellableEvent;
 import lombok.*;
 import net.minecraft.network.Packet;
 
